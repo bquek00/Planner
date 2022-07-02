@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{my_event["name"]}}
+{% endblock %}
+
+{% block main %}
+
+<div id="edit" class="bg-text">
+    <h1>Edit Event</h1>
+    {{time}}
+    <form action="/edit" method="post">
+        <div class="form-group">
+            <label for="event_name">Event Name:</label>
+            <input type="text" value = "{{my_event["name"]}}" class="form-control" id="event_name" name="event_name" placeholder="Name of your event" required>
+        </div>
+        <div class="form-group">
+            <label for="event_date">Event Date:</label>
+            <input type="datetime-local" value = "{{my_event["date"]}}" class="form-control" id="event_date" name ="event_date" min="{{time}}" required>
+        </div>
+        <p class="formfield">
+        <div class="form-group">
+            <label for="about_event">About Event</label>
+            <textarea class="form-control" name="about_event" id="about_event" rows="3" required>{{my_event["about"]}}</textarea>
+        </div>
+        </p>
+        <button id="submit_event" name="submit_event" value ={{my_event["event_id"]}} class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+{% endblock %}

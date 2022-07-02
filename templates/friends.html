@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Friends
+{% endblock %}
+
+{% block main %}
+<div id="friends" class="bg-text">
+    <h1>Friends</h1>
+    {% if friends %}
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>ID</th>
+            <th></th>
+        </tr>
+        {% for friend in friends%}
+        <tr>
+            <td>{{friend["username"]}}</td>
+            <td>{{friend["id"]}}</td>
+            <td>
+                <form action="/remove" method="post">
+                    <button id="remove" name="friend_remove" value={{friend["id"]}} class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    You have no friends
+    {% endif %}
+</div>
+<div id="request" class="bg-text">
+    <h1>Friend Requests</h1>
+    {% if friend_requests %}
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>ID</th>
+            <th colspan="2" id="friend_notification">You have {{friend_requests|length}} requests</th>
+            <th></th>
+        </tr>
+        {% for request in friend_requests %}
+        <tr>
+            <td>{{request["username"]}}</td>
+            <td>{{request["id"]}}</td>
+            <td>
+                <form action="/confirm" method="post">
+                    <button name="friend_confirm" value={{request["id"]}} class="btn btn-success" type="submit">Accept</button>
+                </form>
+            </td>
+            <td>
+                <form action="/delete" method="post">
+                    <button id="delete" name="friend_delete" value={{request["id"]}} class="btn btn-danger" type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    You have no friend requests
+    {% endif %}
+</div>
+<div id="find" class="bg-text">
+    <h1>Find Friends</h1>
+    <form id="find_friends" action="/friends" method="post">
+        <div id="friend_search" class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="user_id" placeholder="Enter user id" type="text">
+        </div>
+        <button id ="friend_submit" class="btn btn-primary" type="submit">Find</button>
+        <div class="clear_divs"></div>
+    </form>
+    <div id = "friend_form">
+    {% if result %}
+    <h2>Results: </h2>
+    <h3>{{result}}</h3>
+    {% endif %}
+    {% if found_friend %}
+    <form id="add_friend" action="/add_friend" method="post">
+        <button id="friend_add" class="btn btn-success" type="submit">Add Friend</button>
+    </form>
+    {% endif %}
+    </div>
+</div>
+
+<script>
+    document.querySelector("#remove").onclick = function() {
+        return confirm("Are you sure?");
+    };
+    document.querySelector("#delete").onclick = function() {
+        return confirm("Are you sure?");
+    };
+</script>
+
+{% endblock %}

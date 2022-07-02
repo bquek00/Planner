@@ -1,0 +1,188 @@
+.logo 
+{
+    color:white;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.logo:hover {
+    color: #CFCFCF;
+    font-size:40px;
+    text-decoration: none;
+}
+
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+/* colors for brand */
+#profileid
+{
+    color: grey;
+}
+
+#profileid:hover
+{
+    color: white;
+}
+
+nav .navbar-brand .red
+{
+    color: #ea433b;
+}
+nav .navbar-brand .yellow
+{
+    color: #f5b82e;
+}
+nav .navbar-brand .green
+{
+    color: #2e944b;
+}
+
+.reglog, #friend_form /*main .form-control */
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+.logo
+{
+    /* resize plansg logo */
+    width: 300px;
+}
+
+nav .navbar-nav li a{
+    /* navbar link colors */
+  color: white !important;
+  font-weight: bold;
+  font-size: large;
+  border: 5px solid white;
+  border-radius: 25px;
+  }
+
+.navbar-nav > li{
+    /* add spacing between navlinks */
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+body {
+    /* https://www.pexels.com/photo/photography-of-city-during-dusk-867092/ 
+    background from pexels */
+  background-image: url('background.jpg'); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+footer{
+    /* create a footer */
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+
+.bg-text {
+/* positin the div on the center of the page */
+  background-color: rgba(0,0,0, 0.4);
+  color: white;
+  font-weight: bold;
+  border: 3px solid white;
+  margin: auto;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+
+#register, #login, .home_plan
+{
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#friend_submit, #friend_search, .sidebyside
+{
+    display:inline-block;
+}
+
+.clear_divs
+{
+    clear: both;
+}
+
+td, th, p, h3
+{
+    padding: 10px;
+    text-align: left;
+}
+
+table
+{
+    width:100%;
+}
+
+tr
+{
+    border-top: solid lightgrey 1px;
+    border-bottom: solid lightgrey 1px;
+}
+
+#friend_notification
+{
+    font-size: large;
+}
+
+#about_event
+{
+    vertical-align: middle;
+    border: 1px solid black;
+}
+
+#add_event, #add_friend_event
+{
+    display: none ;
+}
+
+#add{
+    margin-bottom: 10px;
+}
+
+img
+{
+    width: 100px;
+
+}

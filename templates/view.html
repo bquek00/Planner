@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    View {{my_event["event_id"]}}
+{% endblock %}
+
+{% block main %}
+<div id="event_title" class="bg-text">
+    <h1>{{my_event["name"]}}</h1>
+    <h2>{{my_event["date"]}}</h2>
+</div>
+
+<div id="event_info" class="bg-text">
+    <h1>About</h1>
+    <p>{{my_event["about"]}}</p>
+</div>
+
+<div id="weather_outlook" class="bg-text">
+    <h1>Weather Outlook</h1>
+    {% if weather == "Weather Unavailable" %}
+    {{weather}}
+    {% else %}
+    <h3>Forecast: {{weather["forecast"]}}</h3>
+    <h3>Relative Humidity: {{weather["relative_humidity"]["low"]}}% - {{weather["relative_humidity"]["high"]}}%</h3>
+    <h3>Temperature (°C): {{weather["temperature"]["low"]}} - {{weather["temperature"]["high"]}}</h3>
+    <h3>Wind Speed (km/h): {{weather["wind"]["speed"]["low"]}} - {{weather["wind"]["speed"]["high"]}} {{weather["wind"]["direction"]}}</h3>
+    Data provided for free by <a href="https://data.gov.sg/developer">Data.gov.sg</a>. View <a href="https://data.gov.sg/privacy-and-website-terms#site-terms">Terms of Use</a>.
+    {% endif %}
+
+</div>
+<div id="event_members" class="bg-text">
+    <h1>Members</h1>
+    {% if members %}
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>ID</th>
+            <th>
+                <button name="add_member" id="add_member" class="btn btn-success" type="submit">Add Members</button>
+            </th>
+        </tr>
+        {% for member in members%}
+        <tr>
+            <td>{{member["username"]}}</td>
+            <td>{{member["id"]}}</td>
+            <td>
+                <form action="/view" method="post">
+                    <button name="remove_member" value={{member["id"]}} class="btn btn-danger" type="submit">Remove</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    You have no members
+    {% endif %}
+</div>
+
+<div id="add_friend_event" class="bg-text">
+    <h1>Friend List:</h1>
+    {% if friends %}
+    <table>
+        <tr>
+            <th>NAME</th>
+            <th>ID</th>
+            <th>
+            </th>
+        </tr>
+        {% for friend in friends %}
+        <tr>
+            <td>{{friend["username"]}}</td>
+            <td>{{friend["id"]}}</td>
+            <td>
+                <form action="/view" method="post">
+                    <button name="add_member" value={{friend['id']}} class="btn btn-success" type="submit">Add</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    You have no friends
+    {% endif %}
+</div>
+
+<script>
+    document.querySelector("#add_member").onclick = function() {
+        document.querySelector("#add_friend_event").style.display="block";
+        document.querySelector("#add_friend_event").scrollIntoView();
+    };
+</script>
+
+{% endblock %}
+

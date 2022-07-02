@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block main %}
+
+
+<div id="profile" class="bg-text home_plan">
+    <h1>EVENTS</h1>
+    <img src="/static/event.png" alt="event symbol">
+    {% if events %}
+    <h2>You have {{events}} upcoming events</h2>
+    {% else %}
+    <h2>You have no upcoming events</h2>
+    {% endif %}
+     <form action="/schedule" method="get">
+        <button name="more" class="btn btn-success" type="submit">more info</button>
+    </form>
+</div>
+
+<div id="profile" class="bg-text home_plan">
+    <h1>FRIEND REQUESTS</h1>
+    <img src="/static/friend.png" alt="friend symbol">
+    {% if friends %}
+    <h2>You have {{friends}} pending friend requests</h2>
+    {% else %}
+    <h2>You have no pending friend requests</h2>
+    {% endif %}
+    <form action="/friends" method="get" height="200" width="200">
+        <button name="more_friends" class="btn btn-success" type="submit">more info</button>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+{% block footer %}
+<footer class="small text-center text-muted">
+    Icons provided for free by <a href="https://icons8.com/">Icons8</a>. View <a href="https://icons8.com/vue-static/landings/pricing/icons8-license.pdf">Icons8’s Terms of Use</a>.
+</footer>
+{% endblock%}

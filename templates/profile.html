@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+{{user["username"]}}
+{% endblock %}
+
+{% block main %}
+
+
+<div id="profile" class="bg-text">
+    <h1 class="sidebyside">{{user["username"]}}<h1 id="profileid" class="sidebyside">#{{user["id"]}}</h1>
+    <div class="clear_divs"></div>
+    <h2>Username:{{user["username"]}} </h2>
+    <h2>ID: {{user["id"]}}</h2>
+    <div>You can only add friends via ID</div>
+</div>
+
+{% endblock %}

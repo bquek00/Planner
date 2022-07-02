@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    TODO
+{% endblock %}
+
+{% block main %}
+<div id="register" class="bg-text">
+    <h1>REGISTER</h1>
+      <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control reglog" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control reglog" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control reglog" name="password2" placeholder="Password (again)" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+</div>
+{% endblock %}
