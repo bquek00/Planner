@@ -1,4 +1,4 @@
-# Planber
+# Planner
 A Website for creating and sharing plans with friends.
 
 Built using Python, Flask, and SQLITE3.
